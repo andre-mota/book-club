@@ -22,22 +22,22 @@ export const fetchClubs = () => {
       );
 
       console.log(response.data);
-      dispatch(fetchClubsSuccess(response.data.clubs.rows));
+      dispatch(fetchClubsSuccess(response.data.clubs));
     } catch (e) {
       console.log(e.message);
     }
   };
 };
-export const fetchMyClubs = (userId) => {
+export const fetchMyClubs = () => {
   return async (dispatch, getState) => {
     try {
     
       const response = await axios.get(
-        `${apiUrl}/clubs/user/${userId}`
+        `${apiUrl}/clubs/user`
       );
 
       console.log(response.data);
-      dispatch(fetchMyClubsSuccess(response.data.clubs.rows));
+      dispatch(fetchMyClubsSuccess(response.data.clubs));
     } catch (e) {
       console.log(e.message);
     }

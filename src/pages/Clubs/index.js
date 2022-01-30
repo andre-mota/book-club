@@ -8,6 +8,7 @@ import Club from "../../components/Club";
 
 export default function Clubs() {
   const dispatch = useDispatch();
+
   const clubs = useSelector(selectClubs);
 
   useEffect(() => {
