@@ -3,3 +3,4 @@ export const openLibraryBooksApiUrl =
   process.env.OPEN_LIBRARY_BOOKS_API_URL ||
   "https://openlibrary.org/search.json";
 export const DEFAULT_MESSAGE_TIMEOUT = 3000;
+export const DEFAULT_PAGINATION_LIMIT = 10;

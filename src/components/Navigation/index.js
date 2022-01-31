@@ -21,8 +21,13 @@ export default function Navigation() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/" linkText="My Clubs" />
+          <NavbarItem path="/" linkText="My Discussions" />
           <NavbarItem path="/search" linkText="Create a New Discussion" />
+          <NavbarItem path="/allClubs" linkText="All Discussions" />
+          {token ? (
+            <NavbarItem path="/myClubs" linkText="My Discussions" />
+          ) : null}
+          {/* <NavbarItem path="/other" linkText="Other" /> */}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>

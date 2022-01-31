@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
+import MyClubs from "./pages/MyClubs";
+import Clubs from "./pages/Clubs";
 
 const Home = () => (
   <Jumbotron>
@@ -45,6 +47,8 @@ function App() {
         <Route path="/other" element={<Other />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/myClubs" element={<MyClubs/>} />
+        <Route path="/allClubs" element={<Clubs/>} />
       </Routes>
     </div>
   );
