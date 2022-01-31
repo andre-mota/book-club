@@ -4,7 +4,7 @@ const initialState = {
   list: [],
 };
 
-export default function SearchReducer(state = initialState, action) {
+export default function Search(state = initialState, action) {
   switch (action.type) {
     case SEARCH_ADD_BOOKS:
       return {

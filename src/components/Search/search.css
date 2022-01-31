@@ -1,0 +1,17 @@
+.suggestions {
+  cursor: pointer;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.search-stack {
+  width: fit-content;
+  margin: auto;
+}
+
+.title {
+  margin-top: 10px;
+
+  margin-bottom: 10px;
+}

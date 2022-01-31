@@ -17,6 +17,7 @@ import { Jumbotron } from "react-bootstrap";
 const Home = () => (
   <Jumbotron>
     <h1>Home</h1>
+    <h3>Welcome</h3>
   </Jumbotron>
 );
 const Other = () => (
@@ -39,7 +40,8 @@ function App() {
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Routes>
-        <Route exact path="/" element={<Search />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/search" element={<Search />} />
         <Route path="/other" element={<Other />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />

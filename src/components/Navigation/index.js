@@ -22,7 +22,7 @@ export default function Navigation() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="My Clubs" />
-          <NavbarItem path="/other" linkText="Discussions" />
+          <NavbarItem path="/search" linkText="Create a New Discussion" />
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
