@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 // Import actions
 import { fetchBooksByTitle } from "../../store/search/actions";
 import { initialBooks } from "../../store/search/actions";
+import { createNewDiscussion } from "../../store/search/actions";
 
 // Import Selectors
 import { selectSearchBooks } from "../../store/search/selectors.js";
@@ -27,14 +28,27 @@ export default function Search() {
   const options = useSelector(selectSearchBooks);
   const [value, setValue] = React.useState("");
 
-  // date pickers
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-
   useEffect(() => {
     // TODO: this is not working, not urgent.
     dispatch(initialBooks);
   }, [dispatch]);
+
+  function submitCreateDiscussion(event) {
+    event.preventDefault();
+
+    const coverId = `https://covers.openlibrary.org/b/id/${value.coverId}-M.jpg`;
+
+    dispatch(
+      createNewDiscussion(
+        value.lccn[value.lccn.length - 1],
+        value.label,
+        coverId
+      )
+    );
+
+    setInputValue("");
+    setValue("");
+  }
 
   return (
     <div className="search-stack">
@@ -64,16 +78,7 @@ export default function Search() {
         />
         {/* TODO: Add the book's cover */}
         {/* {value && value.lccn[0]} */}
-        <Button
-          variant="contained"
-          onClick={() => {
-            console.log(
-              value.lccn[value.lccn.length - 1],
-              value.label,
-              value.coverId
-            );
-          }}
-        >
+        <Button variant="contained" onClick={submitCreateDiscussion}>
           Create
         </Button>
       </Stack>
