@@ -46,10 +46,6 @@ export function booksFetched(booksFromAPI) {
 // Fetching
 export const fetchBooksByTitle = (searchText) => {
   return async (dispatch, getState) => {
-    // Get token from the state
-    // const token = selectToken(getState());
-    // if (token === null) return;
-
     // Set app state as 'loading' until we can display the new data
     dispatch(appLoading());
     try {
@@ -81,6 +77,40 @@ export const fetchBooksByTitle = (searchText) => {
         console.log(error);
       }
 
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
+// Create New Discussion
+export const createNewDiscussion = (bookdLccn, bookTitle, bookCoverUrl) => {
+  return async (dispatch, getState) => {
+    // Get token from the state
+    const token = selectToken(getState());
+
+    dispatch(appLoading());
+    try {
+      const response = await axios.post(
+        `${apiUrl}/books`,
+        {
+          lccn: bookdLccn,
+          title: bookTitle,
+          coverUrl: bookCoverUrl,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      dispatch(showMessageWithTimeout("success", true, "Discussion created"));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
       dispatch(appDoneLoading());
     }
   };
