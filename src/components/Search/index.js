@@ -7,9 +7,6 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DatePicker from "@mui/lab/DatePicker";
 
 // React & Redux imports
 import { useEffect } from "react";
@@ -41,7 +38,7 @@ export default function Search() {
 
   return (
     <div className="search-stack">
-      <h3 className="title">Search</h3>
+      <h3 className="title">Search for a book</h3>
       <Stack spacing={2}>
         <Autocomplete
           disablePortal
@@ -67,35 +64,13 @@ export default function Search() {
         />
         {/* TODO: Add the book's cover */}
         {/* {value && value.lccn[0]} */}
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <DatePicker
-            label="Start Date"
-            value={startDate}
-            onChange={(newValue) => {
-              setStartDate(newValue);
-            }}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </LocalizationProvider>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <DatePicker
-            label="End Date"
-            value={endDate}
-            onChange={(newValue) => {
-              setEndDate(newValue);
-            }}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </LocalizationProvider>
         <Button
           variant="contained"
           onClick={() => {
             console.log(
               value.lccn[value.lccn.length - 1],
               value.label,
-              value.coverId,
-              startDate,
-              endDate
+              value.coverId
             );
           }}
         >
