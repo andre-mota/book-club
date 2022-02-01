@@ -24,7 +24,7 @@ export default function MyBooks() {
       <div className="myBookList">
         <Container>
           {myBooks.map((book) => {
-            return <Book key={book.id} id={book.id} title={book.title} />;
+            return <Book key={book.id} id={book.id} title={book.title} lccn={book.lccn} coverUrl={book.coverUrl}/>;
           })}
         </Container>
       </div>
