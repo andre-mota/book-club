@@ -6,6 +6,8 @@ import Book from "../../components/Book";
 import { selectBooks } from "../../store/books/selectors";
 import { fetchBooks } from "../../store/books/actions";
 
+import "./books.css";
+
 export default function Books() {
   const dispatch = useDispatch();
 
@@ -15,22 +17,18 @@ export default function Books() {
     dispatch(fetchBooks());
   }, [dispatch]);
 
-return (
-  <>
-  <Jumbotron>
-    <h1>Discussions</h1>
-  </Jumbotron>
-  <Container>
-    {books.map(book => {
-      return(
-        <Book
-        key={book.id}
-        id={book.id}
-        title={book.title}
-        />
-      );
-    })}
-  </Container>
-  </>
-);
+  return (
+    <>
+      <Jumbotron>
+        <h1>Discussions</h1>
+      </Jumbotron>
+      <div className="bookList">
+        <Container>
+          {books.map((book) => {
+            return <Book key={book.id} id={book.id} title={book.title} />;
+          })}
+        </Container>
+      </div>
+    </>
+  );
 }
