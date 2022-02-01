@@ -11,7 +11,7 @@ import "./myBooks.css";
 export default function MyBooks() {
   const dispatch = useDispatch();
   const myBooks = useSelector(selectMyBooks);
-
+  // TODO: in the useEffect do if array of my books is empty than fetch. Write logic for that
   useEffect(() => {
     dispatch(fetchMyBooks());
   }, [dispatch]);
@@ -24,7 +24,15 @@ export default function MyBooks() {
       <div className="myBookList">
         <Container>
           {myBooks.map((book) => {
-            return <Book key={book.id} id={book.id} title={book.title} />;
+            return (
+              <Book
+                key={book.id}
+                id={book.id}
+                title={book.title}
+                lccn={book.lccn}
+                coverUrl={book.coverUrl}
+              />
+            );
           })}
         </Container>
       </div>

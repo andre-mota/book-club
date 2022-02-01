@@ -12,7 +12,7 @@ export default function Books() {
   const dispatch = useDispatch();
 
   const books = useSelector(selectBooks);
-
+  console.log(books);
   useEffect(() => {
     dispatch(fetchBooks());
   }, [dispatch]);
@@ -25,7 +25,15 @@ export default function Books() {
       <div className="bookList">
         <Container>
           {books.map((book) => {
-            return <Book key={book.id} id={book.id} title={book.title} />;
+            return (
+              <Book
+                key={book.id}
+                id={book.id}
+                title={book.title}
+                lccn={book.lccn}
+                coverUrl={book.coverUrl}
+              />
+            );
           })}
         </Container>
       </div>

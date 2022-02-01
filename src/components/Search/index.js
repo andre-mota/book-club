@@ -11,14 +11,18 @@ import Button from "@mui/material/Button";
 // React & Redux imports
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 // Import actions
 import { fetchBooksByTitle } from "../../store/search/actions";
 import { initialBooks } from "../../store/search/actions";
 import { createNewDiscussion } from "../../store/search/actions";
+import { discussionData } from "../../store/discussion/actions";
 
 // Import Selectors
 import { selectSearchBooks } from "../../store/search/selectors.js";
+import { selectDiscussionData } from "../../store/discussion/selectors";
+
 import Loading from "../Loading";
 
 export default function Search() {
@@ -27,6 +31,13 @@ export default function Search() {
   const [inputValue, setInputValue] = React.useState("");
   const options = useSelector(selectSearchBooks);
   const [value, setValue] = React.useState("");
+
+  // discussion data
+  const discussionData = useSelector(selectDiscussionData);
+  const discussionPage = `/discussions/${discussionData.id}`;
+
+  // check if search was done yet
+  const [postSearch, setPostSearch] = useState(false);
 
   useEffect(() => {
     // TODO: this is not working, not urgent.
@@ -48,6 +59,7 @@ export default function Search() {
 
     setInputValue("");
     setValue("");
+    setPostSearch(true);
   }
 
   return (
@@ -81,6 +93,11 @@ export default function Search() {
         <Button variant="contained" onClick={submitCreateDiscussion}>
           Create
         </Button>
+        {postSearch && (
+          <Link to={discussionPage} className="search-stack">
+            <Button variant="outlined">Go to discussion</Button>
+          </Link>
+        )}
       </Stack>
     </div>
   );

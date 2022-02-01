@@ -15,6 +15,7 @@ import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
 import Books from "./pages/Books";
 import MyBooks from "./pages/MyBooks";
+import BookComments from "./pages/BookComments";
 
 const Home = () => (
   <Jumbotron>
@@ -44,10 +45,10 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Books />} />
         <Route exact path="/search" element={<Search />} />
-        <Route path="/other" element={<Other />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/myDiscussions" element={<MyBooks />} />
+        <Route path="/discussions/:id" element={<BookComments />} />
       </Routes>
     </div>
   );

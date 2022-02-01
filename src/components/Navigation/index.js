@@ -29,6 +29,9 @@ export default function Navigation() {
           {token ? (
             <NavbarItem path="/search" linkText="Create a New Discussion" />
           ) : null}
+          {token ? (
+            <NavbarItem path="/myDiscussion" linkText="My Discussion" />
+          ) : null}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
