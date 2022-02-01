@@ -9,27 +9,21 @@ import { fetchMyBooks } from "../../store/books/actions";
 export default function MyBooks() {
   const dispatch = useDispatch();
   const myBooks = useSelector(selectMyBooks);
-
+  // TODO: in the useEffect do if array of my books is empty than fetch. Write logic for that
   useEffect(() => {
     dispatch(fetchMyBooks());
   }, [dispatch]);
 
-return (
-  <>
-  <Jumbotron>
-    <h1>My Discussions</h1>
-  </Jumbotron>
-  <Container>
-    {myBooks.map(book => {
-      return(
-        <Book
-        key={book.id}
-        id={book.id}
-        title={book.title}
-        />
-      );
-    })}
-  </Container>
-  </>
-);
+  return (
+    <>
+      <Jumbotron>
+        <h1>My Discussions</h1>
+      </Jumbotron>
+      <Container>
+        {myBooks.map((book) => {
+          return <Book key={book.id} id={book.id} title={book.title} />;
+        })}
+      </Container>
+    </>
+  );
 }
