@@ -6,6 +6,8 @@ import axios from "axios";
 import { selectToken } from "../user/selectors";
 import { selectUser } from "../user/selectors";
 
+import { discussionData } from "../discussion/actions";
+
 import {
   appLoading,
   appDoneLoading,
@@ -83,7 +85,7 @@ export const fetchBooksByTitle = (searchText) => {
 };
 
 // Create New Discussion
-export const createNewDiscussion = (bookdLccn, bookTitle, bookCoverUrl) => {
+export const createNewDiscussion = (bookLccn, bookTitle, bookCoverUrl) => {
   return async (dispatch, getState) => {
     // Get token from the state
     const token = selectToken(getState());
@@ -93,7 +95,7 @@ export const createNewDiscussion = (bookdLccn, bookTitle, bookCoverUrl) => {
       const response = await axios.post(
         `${apiUrl}/books`,
         {
-          lccn: bookdLccn,
+          lccn: bookLccn,
           title: bookTitle,
           coverUrl: bookCoverUrl,
         },
@@ -101,6 +103,7 @@ export const createNewDiscussion = (bookdLccn, bookTitle, bookCoverUrl) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+      dispatch(discussionData(response.data.book));
       dispatch(showMessageWithTimeout("success", true, "Discussion created"));
       dispatch(appDoneLoading());
     } catch (error) {
