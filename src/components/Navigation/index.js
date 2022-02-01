@@ -16,13 +16,19 @@ export default function Navigation() {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={NavLink} to="/">
-        YOUR PROJECT NAME
+        📖 Book Club
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/" linkText="Home" />
-          <NavbarItem path="/other" linkText="Other" />
+          <NavbarItem path="/" linkText="All Discussions" />
+          {token ? (
+            <NavbarItem path="/myDiscussions" linkText="My Discussions" />
+          ) : null}
+          {/* <NavbarItem path="/other" linkText="Other" /> */}
+          {token ? (
+            <NavbarItem path="/search" linkText="Create a New Discussion" />
+          ) : null}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>

@@ -7,15 +7,19 @@ import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Search from "./components/Search";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
+import Books from "./pages/Books";
+import MyBooks from "./pages/MyBooks";
 
 const Home = () => (
   <Jumbotron>
     <h1>Home</h1>
+    <h3>Welcome</h3>
   </Jumbotron>
 );
 const Other = () => (
@@ -33,15 +37,17 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className='App'>
+    <div className="App">
       <Navigation />
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route path='/other' element={<Other />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/login' element={<Login />} />
+        <Route exact path="/" element={<Books />} />
+        <Route exact path="/search" element={<Search />} />
+        <Route path="/other" element={<Other />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/myDiscussions" element={<MyBooks />} />
       </Routes>
     </div>
   );
