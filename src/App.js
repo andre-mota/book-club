@@ -44,7 +44,6 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Books />} />
         <Route exact path="/search" element={<Search />} />
-        <Route path="/other" element={<Other />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/myDiscussions" element={<MyBooks />} />
