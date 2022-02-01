@@ -21,10 +21,9 @@ export default function Navigation() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/" linkText="My Discussions" />
-          <NavbarItem path="/allClubs" linkText="All Discussions" />
+          <NavbarItem path="/" linkText="All Discussions" />
           {token ? (
-            <NavbarItem path="/myClubs" linkText="My Discussions" />
+            <NavbarItem path="/myDiscussions" linkText="My Discussions" />
           ) : null}
           {/* <NavbarItem path="/other" linkText="Other" /> */}
           {token ? (
