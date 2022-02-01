@@ -23,9 +23,9 @@ export default function Navigation() {
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="My Discussions" />
           <NavbarItem path="/search" linkText="Create a New Discussion" />
-          <NavbarItem path="/allClubs" linkText="All Discussions" />
+          <NavbarItem path="/allDiscussions" linkText="All Discussions" />
           {token ? (
-            <NavbarItem path="/myClubs" linkText="My Discussions" />
+            <NavbarItem path="/mydiscussions" linkText="My Discussions" />
           ) : null}
           {/* <NavbarItem path="/other" linkText="Other" /> */}
           {loginLogoutControls}
