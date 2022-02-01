@@ -12,6 +12,7 @@ export default function Books() {
   const dispatch = useDispatch();
 
   const books = useSelector(selectBooks);
+  console.log("books", books);
 
   useEffect(() => {
     dispatch(fetchBooks());
