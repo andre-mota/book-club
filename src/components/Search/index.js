@@ -28,6 +28,9 @@ export default function Search() {
   const options = useSelector(selectSearchBooks);
   const [value, setValue] = React.useState("");
 
+  // check if search was done yet
+  const [postSearch, setPostSearch] = useState(false);
+
   useEffect(() => {
     // TODO: this is not working, not urgent.
     dispatch(initialBooks);
@@ -48,10 +51,12 @@ export default function Search() {
 
     setInputValue("");
     setValue("");
+    setPostSearch(true);
   }
 
   return (
     <div className="search-stack">
+      {!postSearch ? (
       <h3 className="title">Search for a book</h3>
       <Stack spacing={2}>
         <Autocomplete
@@ -82,6 +87,8 @@ export default function Search() {
           Create
         </Button>
       </Stack>
+  )
+}
     </div>
   );
 }
